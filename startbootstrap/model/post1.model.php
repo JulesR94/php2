@@ -1,5 +1,5 @@
 <?php
-$bg = 'startbootstrap/assets/img/post-bg.jpg';
+$bg = 'assets/img/post-bg.jpg';
 $title = "Les origines";
 $subtitle = "D'ou ça vient?";
 $content = "Pourquoi Dit-on sneakers ?

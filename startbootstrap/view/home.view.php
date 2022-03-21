@@ -1,6 +1,6 @@
-<?php include("nav.inc.php");?>
+<?php include("view/layout/nav.inc.php");?>
 
-<?php include("header.inc.php");?>
+<?php include("view/layout/header.inc.php");?>
         <!-- Main Content-->
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
