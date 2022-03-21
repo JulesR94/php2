@@ -14,4 +14,4 @@
             </div>
         </article>
         <!-- Footer-->
-        <?php include("footer.inc.php");?>
+        <?php include("view/layout/footer.inc.php");?>

@@ -65,7 +65,7 @@
             </div>
         </main>
         <!-- Footer-->
-        <?php include("footer.inc.php");?>
+        <?php include("view/layout/footer.inc.php");?>
         <!-- Bootstrap core JS-->
         <!-- Core theme JS-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
