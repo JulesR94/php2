@@ -1,19 +1,30 @@
 <?php
 
-if ( (!isset($_GET['article']))  || ($_GET['article'] == 1) ) {
+// Post model
 
-$bg = 'assets/img/post-bg.jpg';
-$title = "Les origines";
-$subtitle = "D'ou ça vient?";
-$content = "Pourquoi Dit-on sneakers ?
-Résultat de recherche d'images pour
-Le nom « sneakers » a pour origine le verbe anglais « to sneak » signifiant « se déplacer furtivement » et donc silencieusement. Il fait référence au silence des semelles en caoutchouc au sol, contrairement aux chaussures habillées à semelle en cuir dur standard, bruyantes.";
-}
+include("config/config.inc.php");
+include("model/pdo.inc.php");
 
-else if ($_GET['article'] == 2) {
+try {
+    $query = "
+    SELECT post_date, post_content, post_title, display_name, cat_descr 
+    FROM blog_posts
+    
+    INNER JOIN blog_users
+    ON post_author = ID
+    
+    INNER JOIN blog_categories
+    ON post_category = cat_id
+    
+    WHERE post_ID = " . $_GET["article"];
 
-$bg = 'https://cdn.futura-sciences.com/buildsv6/images/wide1920/6/9/7/697bcaaf34_50179672_ocean-min.jpg';
-$title = '';
-$subtitle = '';
-$content = '';
+    //die($query);
+
+    $req = $pdo->query($query);
+
+    $data = $req->fetch();
+    //var_dump($data); 
+
+} catch(Exception $e) {
+    die("Erreur MySQL : " . $e->getMessage());
 }

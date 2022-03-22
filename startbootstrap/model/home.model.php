@@ -1,33 +1,40 @@
 <?php
 
+// Home model
+
 include("config/config.inc.php");
 include("model/pdo.inc.php");
 
 try {
-    $req = $pdo -> query('SELECT post_date,post_title,post_content, cat_descr
+    $query = "
+    SELECT post_ID, post_date, LEFT(post_content, " . TRONCATURE . ") AS post_content, post_title, display_name, cat_descr 
     FROM blog_posts
     
     INNER JOIN blog_users
     ON post_author = ID
     
     INNER JOIN blog_categories
-    ON post_category = cat_id');
+    ON post_category = cat_id
     
-    // var_dump($req);
-    // echo('Fin');
-    //while ($data = $req ) {}
-    $data = $req->fetchAll();
-    // var_dump($data);
+    ORDER BY post_date DESC";
 
-} catch (Exception $e) {
-        die ('Erreur MySQL : ' . $e->getMessage());
+    //die($query);
+
+    $req = $pdo->query($query);
+
+    $data = $req->fetchAll();
+
+} catch(Exception $e) {
+    die("Erreur MySQL : " . $e->getMessage());
 }
 
 $bg = 'assets/img/home-bg.jpg';
-$title = "Blog de Sneakers";
-$subtitle = "Sneaker Addict";
+$title = 'Blog de surf';
+$subtitle = 'Le meilleur sport de glisse !';
 
+/*
 $title_art_1 = 'Planche de surf';
-$subtitle_art_1 = 'Comment la choisir';
-$author_art_1= 'Jules.R';
-$date_art_1= 'Le 16 Mars 2022';
+$subtitle_art_1 = 'Comment bien la choisir ?';
+$author_art_1 = 'Philippe G.';
+$date_art_1 = '17 Mars 2022';
+*/

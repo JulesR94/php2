@@ -1,5 +1,5 @@
 <?php include("model/home.model.php");
 
-$layout_title = 'Bienvenue sur mon site';
+$layout_title = 'Titre = ' . $title;
 
  include("view/home.view.php");
