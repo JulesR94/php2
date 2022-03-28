@@ -18,10 +18,19 @@
     <body>
         <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="index.php">Test site</a>
+                <a class="navbar-brand" href="index.php">MonSuperSite</a>
+
+                <?php if (isset($_GET["notif"])) { ?>
+                    <div class="alert alert-success" role="alert">
+                        <?php if ($_GET["notif"] == 1) echo "Merci de nous avoir contacté !"; ?>
+                        <?php if ($_GET["notif"] == 2) echo "Merci de vous être inscrit !"; ?>
+
+                    </div> 
+                <?php } ?>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
-                    <i class="fas fa-bars"></i>
+                    <i cl ass="fas fa-bars"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
@@ -33,3 +42,4 @@
                 </div>
             </div>
         </nav>
+        

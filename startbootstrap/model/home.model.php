@@ -2,13 +2,13 @@
 
 // Home model
 
-include("config/config.inc.php");
-include("model/pdo.inc.php");
+include("config/config.inc.php"); //pour récupérer les valeurs de mysql
+include("model/pdo.inc.php"); //test et connexion
 
 try {
     $query = "
-    SELECT post_ID, post_date, LEFT(post_content, " . TRONCATURE . ") AS post_content, post_title, display_name, cat_descr 
-    FROM blog_posts
+    SELECT post_ID, post_date, LEFT(post_content, " . TRONCATURE . ") AS post_content, post_title, display_name, cat_descr, post_img_url 
+    FROM blog_posts 
     
     INNER JOIN blog_users
     ON post_author = ID
@@ -16,21 +16,19 @@ try {
     INNER JOIN blog_categories
     ON post_category = cat_id
     
-    ORDER BY post_date DESC";
+    ORDER BY post_date DESC"; // requêle sql:appel des elements dans la bdd
 
-    //die($query);
+    $req = $pdo->query($query); // Execute la requête
 
-    $req = $pdo->query($query);
-
-    $data = $req->fetchAll();
+    $data = $req->fetchAll(); // Récupére les données de la requête
 
 } catch(Exception $e) {
-    die("Erreur MySQL : " . $e->getMessage());
+    die("Erreur MySQL : " . $e->getMessage()); // Renvoie un message d'erreur si la requête n'a pu être effectuée
 }
 
-$bg = 'assets/img/home-bg.jpg';
+$bg = 'assets/img/home-bg.jpg'; 
 $title = 'Blog de surf';
-$subtitle = 'Le meilleur sport de glisse !';
+$subtitle = 'Le meilleur sport de glisse !'; //Definitions de plusieurs elements
 
 /*
 $title_art_1 = 'Planche de surf';

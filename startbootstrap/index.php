@@ -1,5 +1,5 @@
-<?php include("model/home.model.php");
+<?php include("model/home.model.php"); //demande et recupére les infos de home.model
 
-$layout_title = 'Titre = ' . $title;
+$layout_title = 'Titre = ' . $title; // récupére une variable définit dans le home.model
 
- include("view/home.view.php");
+ include("view/home.view.php"); // Charge la view
